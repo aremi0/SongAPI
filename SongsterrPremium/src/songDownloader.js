@@ -40,7 +40,8 @@ function f6cf___INITIAL_STATE___download() {
     let apiUrl = `https://www.songsterr.com/a/ra/player/songrevision/${revisionId}.xml`;
     // Using promise since old versions of chrome doesn't supports async/await
     fetch(apiUrl).then(res => res.text()).then(data => {
-        let url = data.match(/<attachmentUrl>(.+?.gp[t54x])<\/attachmentUrl>/);
+        // The ".gp[t987654321x]" let you find all *.gp(x) file, where x=[0-9]. Before this change it was x=[4-5]
+        let url = data.match(/<attachmentUrl>(.+?.gp[t987654321x])<\/attachmentUrl>/);
         if (!url) {
             alert('Couldn\'t find download url!');
             return;
